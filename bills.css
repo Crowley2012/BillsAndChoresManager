@@ -1,0 +1,57 @@
+/**********************************************
+* Global
+**********************************************/
+
+*{
+	font-family: "Open Sans";
+	font-weight: bold;
+	transition: all 0.5s ease;
+}
+
+html{
+	background-image: url(images/bg.jpg);
+	background-repeat: repeat;
+}
+
+h2{
+	background-color: rgba(255, 161, 0, 0.8);
+	color: black;
+	font-size: 1.1em;
+	padding: 20px;
+	height: 3vh;
+	border-radius:5px 5px 0px 0px;
+	-moz-border-radius:5px 5px 0px 0px;
+	-webkit-border-radius:5px 5px 0px 0px;
+	margin-bottom:2vh;
+}
+
+/**********************************************
+* Center
+**********************************************/
+
+#banner_title{
+	text-align: center;
+	font-size: 1.3em;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+#bill_main_div{
+	margin: auto;
+	top: 2vh;
+	z-index:0;
+	
+	width: 75%;
+	color: white;
+}
+
+.bill_div{
+	position: relative; 
+	
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	margin-bottom:2vh;
+}
