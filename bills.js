@@ -1,46 +1,19 @@
-function validateFormAddSong() {
-    var song = document.forms["addsongform"]["name"].value;
-    var artist = document.forms["addsongform"]["artist"].value;
-    var albumn = document.forms["addsongform"]["albumn"].value;
-
-	if(!song || !artist || !albumn){
-		document.getElementById("error").innerHTML = "Empty Field!";
-		return false;
-	}
-
-	return true;
-}
-
-function validateFormCreateAccount(){
-    var email = document.forms["createaccountform"]["email"].value;
-    var user = document.forms["createaccountform"]["name"].value;
-    var password = document.forms["createaccountform"]["password"].value;
-
-	if(!email || !user || !password){
-		document.getElementById("error").innerHTML = "Empty Field!";
-		return false;
-	}
-
-	if(!email.includes("@") && !email.includes(".")){
-		document.getElementById("error").innerHTML = "Invalid Email!";
-		return false;
-	}
-
-	return true;
-}
-
-function loadSongList(x) {
-	var xhttp = new XMLHttpRequest();
-
-	xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			document.getElementById("songlist").innerHTML = xhttp.responseText;
-			document.getElementById("videoInfo").style.visibility = 'visible';
-			document.getElementById("videoInfo").style.height = 'auto';
-			document.getElementById("videoInfo").style.marginTop = '0';
-		}
-	};
-
-	xhttp.open("GET", "songlists/video" + x + ".txt", true);
-	xhttp.send();
-}
+//CHECKBOX
+$(document).ready(function() {
+	$('#Don').change(function() {
+		if($(this).is(":checked")) {
+		    var returnVal = confirm("Check");
+		    $(this).attr("checked", returnVal);
+			$.ajax({
+			   url: 'update_check.php',
+			   success: function (response) {
+				 alert(response);
+			   }
+			});
+   
+		}else{
+		    var returnVal = confirm("Un-Check");
+		    $(this).attr("checked", returnVal);
+		}      
+	});
+});

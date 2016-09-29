@@ -77,15 +77,15 @@ function printTableHouse(){
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 
-			echo '<form name="voteForm" method="post">';
+			//echo '<form name="voteForm" method="post">';
 
 			if($row["paid"] == 0){
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' onChange='this.form.submit()' name='", $row["name"] ,"'></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' id='", $row["name"] ,"'></td></tr>";
 			}else{
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' onChange='this.form.submit()' name='", $row["name"] ,"'checked></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' id='", $row["name"] ,"'checked></td></tr>";
 			}
 
-			echo '</form>';
+			//echo '</form>';
 
 		}
 	} else {
@@ -93,13 +93,6 @@ function printTableHouse(){
 	}
 
 	$conn->close();
-}
-
-function check($cb){
-	echo "SEANASDFASDF";
-    if($cb.is(":checked")){
-        echo "asdfasdf";
-    }
 }
 
 //ELECTRIC BILL
