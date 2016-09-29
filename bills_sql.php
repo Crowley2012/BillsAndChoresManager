@@ -69,159 +69,395 @@ function displayAllHouse(){
 	$conn->close();
 }
 
-function printAllHouse(){
+function printTableHouse(){
 	$sql = "SELECT * FROM house";
 	$conn = connect();
 	$result = $conn->query($sql);
 
-	echo "<center><table width='50%'>";
-	echo "<tr><th>Name</th><th>Price</th><th>Paid</th></tr>";
-
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
-			echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td>", $row["paid"],  "</td></tr>";	
+
+			echo '<form name="voteForm" method="post">';
+
+			if($row["paid"] == 0){
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' onChange='this.form.submit()' name='", $row["name"] ,"'></td></tr>";
+			}else{
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' onChange='this.form.submit()' name='", $row["name"] ,"'checked></td></tr>";
+			}
+
+			echo '</form>';
+
 		}
 	} else {
 		echo "0 results";
 	}
 
-	echo "</table></center>";
-
 	$conn->close();
 }
 
-//VOTES
+function check($cb){
+	echo "SEANASDFASDF";
+    if($cb.is(":checked")){
+        echo "asdfasdf";
+    }
+}
 
-function createTableVotes(){
-	$sql = "create table if not exists votes(id int(30), email varchar(30), PRIMARY KEY (id, email))";
+//ELECTRIC BILL
+
+function createTableElectric(){
+	$sql = "create table if not exists electric(name varchar(30), price varchar(30), paid int(1), PRIMARY KEY (name))";
 	$conn = connect();
 	$result = $conn->query($sql);
 
 	$conn->close();
 }
 
-function rebuildVotes(){
-	$sql = "drop table votes";
+function rebuildElectric(){
+	$sql = "drop table electric";
 	$conn = connect();
 	$result = $conn->query($sql);
 
-	createTableVotes();
-	addDummyVotes();
+	createTableElectric();
+	addDummyElectric();
 
 	$conn->close();
 }
 
-function insertVotes($id, $email){
+function insertElectric($name, $price, $paid){
 	$conn = connect();
+	$sql = "insert into electric(name, price, paid) values ('$name', '$price', $paid)";
+	$result = $conn->query($sql);
 
-	$sqlCheck = "select * from votes where id = $id and email='$email'";
-	$result = $conn->query($sqlCheck);
+	$conn->close();
+}
+
+function addDummyElectric(){
+	insertElectric("Sean", "$57.36", 1);
+	insertElectric("Don", "$57.36", 0);
+	insertElectric("Norm", "$57.36", 0);
+	insertElectric("Nesh", "$57.36", 0);
+	insertElectric("Mariam", "$57.36", 1);
+	insertElectric("JD", "$57.36", 0);
+}
+
+function displayAllElectric(){
+	$sql = "SELECT * FROM electric";
+	$conn = connect();
+	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
-		$sql = "delete from votes where id = $id and email='$email'";
-		$result = $conn->query($sql);
-	}else{
-		$sql = "insert into votes(id, email) values ('$id', '$email')";
-		$result = $conn->query($sql);
+		while($row = $result->fetch_assoc()) {
+			echo "<p>", $row["name"], "<br/>", $row["price"], "<br/>Submitted by : ", $row["paid"], "</p>";
+		}
 	}
 
 	$conn->close();
 }
 
-function addDummyVotes(){
-	insertVotes("1", "admin");
-	insertVotes("2", "admin");
-	insertVotes("5", "admin");
-	insertVotes("2", "crowley.p.sean@gmail.com");
-	insertVotes("5", "crowley.p.sean@gmail.com");
-	insertVotes("4", "test@gmail.com");
-	insertVotes("3", "test@gmail.com");
-	insertVotes("5", "test@gmail.com");
-}
-
-function printAllVotes(){
-	$sql = "SELECT * FROM votes";
+function printTableElectric(){
+	$sql = "SELECT * FROM electric";
 	$conn = connect();
 	$result = $conn->query($sql);
 
-	echo "<center><table id='sqltable' width='50%'>";
-	echo "<tr><th>ID</th><th>Email</th></tr>";
-
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
-			echo "<tr><td>", $row["id"], "</td><td>", $row["email"], "</td></tr>";	
+			if($row["paid"] == 0){
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+			}else{
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+			}
 		}
 	} else {
 		echo "0 results";
 	}
 
-	echo "</table></center>";
-
 	$conn->close();
 }
 
-function getVotes($id){
-	$sql = "SELECT count(*) as total FROM votes WHERE id = $id";
-	$conn = connect();
-	$result = $conn->query($sql);
+//INTERNET BILL
 
-	$conn->close();
-
-	return $result->fetch_assoc()['total'];
-}
-
-//USERS
-
-function createTableUsers(){
-	$sql = "create table if not exists users(email varchar(30), name varchar(30), password varchar(30), admin int(1), PRIMARY KEY (email))";
+function createTableInternet(){
+	$sql = "create table if not exists internet(name varchar(30), price varchar(30), paid int(1), PRIMARY KEY (name))";
 	$conn = connect();
 	$result = $conn->query($sql);
 
 	$conn->close();
 }
 
-function rebuildUsers(){
-	$sql = "drop table users";
+function rebuildInternet(){
+	$sql = "drop table internet";
 	$conn = connect();
 	$result = $conn->query($sql);
 
-	createTableUsers();
-	addDummyUsers();
+	createTableInternet();
+	addDummyInternet();
 
 	$conn->close();
 }
 
-function insertUsers($email, $name, $password, $admin){
+function insertInternet($name, $price, $paid){
 	$conn = connect();
-	$sql = "insert into users(email, name, password, admin) values ('$email', '$name', '$password', '$admin')";
+	$sql = "insert into internet(name, price, paid) values ('$name', '$price', $paid)";
 	$result = $conn->query($sql);
 
 	$conn->close();
 }
 
-function addDummyUsers(){
-	insertUsers("admin", "Admin", "asdf", 1);
-	insertUsers("crowley.p.sean@gmail.com", "Sean Crowley", "asdf", 0);
-	insertUsers("test@gmail.com", "Test Account", "asdf", 0);
+function addDummyInternet(){
+	insertInternet("Sean", "$6.50", 0);
+	insertInternet("Don", "$6.50", 0);
+	insertInternet("Norm", "$6.50", 0);
+	insertInternet("Nesh", "$6.50", 1);
+	insertInternet("Mariam", "$6.50", 1);
+	insertInternet("JD", "$6.50", 1);
 }
 
-function printAllUsers(){
-	$sql = "SELECT * FROM users";
+function displayAllInternet(){
+	$sql = "SELECT * FROM internet";
 	$conn = connect();
 	$result = $conn->query($sql);
-
-	echo "<center><table id='sqltable' width='50%'>";
-	echo "<tr><th>Email</th><th>Name</th><th>Password</th><th>Admin</th></tr>";
 
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
-			echo "<tr><td>", $row["email"], "</td><td>", $row["name"], "</td><td>", $row["password"],  "</td><td>", $row["admin"], "</td></tr>";	
+			echo "<p>", $row["name"], "<br/>", $row["price"], "<br/>Submitted by : ", $row["paid"], "</p>";
+		}
+	}
+
+	$conn->close();
+}
+
+function printTableInternet(){
+	$sql = "SELECT * FROM internet";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			if($row["paid"] == 0){
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+			}else{
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+			}
 		}
 	} else {
 		echo "0 results";
 	}
 
-	echo "</table></center>";
+	$conn->close();
+}
+
+//WATER BILL
+
+function createTableWater(){
+	$sql = "create table if not exists water(name varchar(30), price varchar(30), paid int(1), PRIMARY KEY (name))";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	$conn->close();
+}
+
+function rebuildWater(){
+	$sql = "drop table water";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	createTableWater();
+	addDummyWater();
+
+	$conn->close();
+}
+
+function insertWater($name, $price, $paid){
+	$conn = connect();
+	$sql = "insert into water(name, price, paid) values ('$name', '$price', $paid)";
+	$result = $conn->query($sql);
+
+	$conn->close();
+}
+
+function addDummyWater(){
+	insertWater("Sean", "$7.77", 1);
+	insertWater("Don", "$7.77", 1);
+	insertWater("Norm", "$7.77", 1);
+	insertWater("Nesh", "$7.77", 0);
+	insertWater("Mariam", "$7.77", 0);
+	insertWater("JD", "$7.77", 0);
+}
+
+function displayAllWater(){
+	$sql = "SELECT * FROM water";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			echo "<p>", $row["name"], "<br/>", $row["price"], "<br/>Submitted by : ", $row["paid"], "</p>";
+		}
+	}
+
+	$conn->close();
+}
+
+function printTableWater(){
+	$sql = "SELECT * FROM water";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			if($row["paid"] == 0){
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+			}else{
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+			}
+		}
+	} else {
+		echo "0 results";
+	}
+
+	$conn->close();
+}
+
+//GARBAGE BILL
+
+function createTableGarbage(){
+	$sql = "create table if not exists garbage(name varchar(30), price varchar(30), paid int(1), PRIMARY KEY (name))";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	$conn->close();
+}
+
+function rebuildGarbage(){
+	$sql = "drop table garbage";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	createTableGarbage();
+	addDummyGarbage();
+
+	$conn->close();
+}
+
+function insertGarbage($name, $price, $paid){
+	$conn = connect();
+	$sql = "insert into garbage(name, price, paid) values ('$name', '$price', $paid)";
+	$result = $conn->query($sql);
+
+	$conn->close();
+}
+
+function addDummyGarbage(){
+	insertGarbage("Sean", "$3.43", 0);
+	insertGarbage("Don", "$3.43", 0);
+	insertGarbage("Norm", "$3.43", 0);
+	insertGarbage("Nesh", "$3.43", 0);
+	insertGarbage("Mariam", "$3.43", 0);
+	insertGarbage("JD", "$3.43", 0);
+}
+
+function displayAllGarbage(){
+	$sql = "SELECT * FROM garbage";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			echo "<p>", $row["name"], "<br/>", $row["price"], "<br/>Submitted by : ", $row["paid"], "</p>";
+		}
+	}
+
+	$conn->close();
+}
+
+function printTableGarbage(){
+	$sql = "SELECT * FROM garbage";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			if($row["paid"] == 0){
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+			}else{
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+			}
+		}
+	} else {
+		echo "0 results";
+	}
+
+	$conn->close();
+}
+
+//GAS BILL
+
+function createTableGas(){
+	$sql = "create table if not exists gas(name varchar(30), price varchar(30), paid int(1), PRIMARY KEY (name))";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	$conn->close();
+}
+
+function rebuildGas(){
+	$sql = "drop table gas";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	createTableGas();
+	addDummyGas();
+
+	$conn->close();
+}
+
+function insertGas($name, $price, $paid){
+	$conn = connect();
+	$sql = "insert into gas(name, price, paid) values ('$name', '$price', $paid)";
+	$result = $conn->query($sql);
+
+	$conn->close();
+}
+
+function addDummyGas(){
+	insertGas("Sean", "$12.03", 1);
+	insertGas("Don", "$12.03", 1);
+	insertGas("Norm", "$12.03", 1);
+	insertGas("Nesh", "$12.03", 1);
+	insertGas("Mariam", "$12.03", 1);
+	insertGas("JD", "$12.03", 1);
+}
+
+function displayAllGas(){
+	$sql = "SELECT * FROM gas";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			echo "<p>", $row["name"], "<br/>", $row["price"], "<br/>Submitted by : ", $row["paid"], "</p>";
+		}
+	}
+
+	$conn->close();
+}
+
+function printTableGas(){
+	$sql = "SELECT * FROM gas";
+	$conn = connect();
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			if($row["paid"] == 0){
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+			}else{
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+			}
+		}
+	} else {
+		echo "0 results";
+	}
 
 	$conn->close();
 }

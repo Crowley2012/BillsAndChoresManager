@@ -7,8 +7,12 @@
 
 	session_start();
 
-	rebuildHouse();
-	printAllHouse();
+	//rebuildHouse();
+	//rebuildElectric();
+	//rebuildInternet();
+	rebuildWater();
+	rebuildGarbage();
+	rebuildGas();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -29,94 +33,73 @@
 	
 		<div class="bill_div">
 			<h2>House</h2>
-			
-			<table>
+			<table class="bill_table">
 				<tr>
-					<td>
-						<p>DATA1</p>
-					</td>
-					<td>
-						<p>DATA2</p>
-					</td>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Paid</th>
 				</tr>
-				<tr>
-					<td>
-						<p>DATA3</p>
-					</td>
-					<td>
-						<p>DATA4</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<p>DATA5</p>
-					</td>
-					<td>
-						<p>DATA6</p>
-					</td>
-				</tr>
+				<?php printTableHouse(); ?>
 			</table>
 		</div>
 		
 		<div class="bill_div">
 			<h2>Electric</h2>
-			
-			<table>
+			<table class="bill_table">
 				<tr>
-					<td>
-						<p>DATA1</p>
-					</td>
-					<td>
-						<p>DATA2</p>
-					</td>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Paid</th>
 				</tr>
-				<tr>
-					<td>
-						<p>DATA3</p>
-					</td>
-					<td>
-						<p>DATA4</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<p>DATA5</p>
-					</td>
-					<td>
-						<p>DATA6</p>
-					</td>
-				</tr>
+				<?php printTableElectric(); ?>
 			</table>
 		</div>
 		
 		<div class="bill_div">
 			<h2>Internet</h2>
-			
-			<table>
+			<table class="bill_table">
 				<tr>
-					<td>
-						<p>DATA1</p>
-					</td>
-					<td>
-						<p>DATA2</p>
-					</td>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Paid</th>
 				</tr>
+				<?php printTableInternet(); ?>
+			</table>
+		</div>
+		
+		<div class="bill_div">
+			<h2>Water</h2>
+			<table class="bill_table">
 				<tr>
-					<td>
-						<p>DATA3</p>
-					</td>
-					<td>
-						<p>DATA4</p>
-					</td>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Paid</th>
 				</tr>
+				<?php printTableWater(); ?>
+			</table>
+		</div>
+		
+		<div class="bill_div">
+			<h2>Garbage</h2>
+			<table class="bill_table">
 				<tr>
-					<td>
-						<p>DATA5</p>
-					</td>
-					<td>
-						<p>DATA6</p>
-					</td>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Paid</th>
 				</tr>
+				<?php printTableGarbage(); ?>
+			</table>
+		</div>
+		
+		<div class="bill_div">
+			<h2>Gas</h2>
+			<table class="bill_table">
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Paid</th>
+				</tr>
+				<?php printTableGas(); ?>
 			</table>
 		</div>
 	</div>

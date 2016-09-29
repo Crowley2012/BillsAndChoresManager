@@ -4,7 +4,6 @@
 
 *{
 	font-family: "Open Sans";
-	font-weight: bold;
 	transition: all 0.5s ease;
 }
 
@@ -16,17 +15,33 @@ html{
 h2{
 	background-color: rgba(255, 161, 0, 0.8);
 	color: black;
-	font-size: 1.1em;
+	font-size: 1.6em;
 	padding: 20px;
-	height: 3vh;
+	font-weight: bold;
+    vertical-align:middle;
 	border-radius:5px 5px 0px 0px;
 	-moz-border-radius:5px 5px 0px 0px;
 	-webkit-border-radius:5px 5px 0px 0px;
-	margin-bottom:2vh;
+}
+
+th{
+	font-size: 1.5em;
+	text-align:center; 
+    vertical-align:middle;
+	height: 50px;
+	border-bottom: 2px solid white;
+	font-weight: bold;
+}
+
+td{
+	text-align:center; 
+    vertical-align:middle;
+	height: 30px; 
+	border-bottom: 1px solid gray;
 }
 
 /**********************************************
-* Center
+* Banner
 **********************************************/
 
 #banner_title{
@@ -37,21 +52,35 @@ h2{
 	-webkit-border-radius:5px;
 }
 
+/**********************************************
+* Bills
+**********************************************/
+
 #bill_main_div{
 	margin: auto;
 	top: 2vh;
 	z-index:0;
-	
 	width: 75%;
 	color: white;
 }
 
 .bill_div{
 	position: relative; 
-	
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	margin-bottom:2vh;
 }
+
+.bill_table{
+	color: white;
+	width: 100%;
+    table-layout: fixed;
+	border-spacing: 0;
+}
+
+.bill_check{
+	transform: scale(1.5);
+}
+
