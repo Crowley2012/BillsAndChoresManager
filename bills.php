@@ -25,6 +25,7 @@
     <script src="bills.js"></script>
 	<title>Cadwell Bills</title>
 </head>
+
 <body>
 	<div id="bill_main_div">
 		<div class="bill_div">

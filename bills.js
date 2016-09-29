@@ -1,19 +1,14 @@
 //CHECKBOX
 $(document).ready(function() {
-	$('#Don').change(function() {
+	$('.bill_check').change(function() {
 		if($(this).is(":checked")) {
-		    var returnVal = confirm("Check");
-		    $(this).attr("checked", returnVal);
 			$.ajax({
-			   url: 'update_check.php',
-			   success: function (response) {
-				 alert(response);
-			   }
+			   url: 'update_check.php?name=' + $(this).attr('name') + '&table=' + $(this).attr('table') + '&check=1'
 			});
-   
 		}else{
-		    var returnVal = confirm("Un-Check");
-		    $(this).attr("checked", returnVal);
+			$.ajax({
+			   url: 'update_check.php?name=' + $(this).attr('name') + '&table=' + $(this).attr('table') + '&check=0'
+			});
 		}      
 	});
 });

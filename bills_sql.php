@@ -76,17 +76,11 @@ function printTableHouse(){
 
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
-
-			//echo '<form name="voteForm" method="post">';
-
 			if($row["paid"] == 0){
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' id='", $row["name"] ,"'></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='house' name='", $row["name"] ,"'></td></tr>";
 			}else{
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' id='", $row["name"] ,"'checked></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='house' name='", $row["name"] ,"'checked></td></tr>";
 			}
-
-			//echo '</form>';
-
 		}
 	} else {
 		echo "0 results";
@@ -155,9 +149,9 @@ function printTableElectric(){
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			if($row["paid"] == 0){
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='electric' name='", $row["name"] ,"'></td></tr>";
 			}else{
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='electric' name='", $row["name"] ,"'checked></td></tr>";
 			}
 		}
 	} else {
@@ -227,9 +221,9 @@ function printTableInternet(){
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			if($row["paid"] == 0){
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='internet' name='", $row["name"] ,"'></td></tr>";
 			}else{
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='internet' name='", $row["name"] ,"'checked></td></tr>";
 			}
 		}
 	} else {
@@ -299,9 +293,9 @@ function printTableWater(){
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			if($row["paid"] == 0){
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='water' name='", $row["name"] ,"'></td></tr>";
 			}else{
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='water' name='", $row["name"] ,"'checked></td></tr>";
 			}
 		}
 	} else {
@@ -371,9 +365,9 @@ function printTableGarbage(){
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			if($row["paid"] == 0){
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='garbage' name='", $row["name"] ,"'></td></tr>";
 			}else{
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='garbage' name='", $row["name"] ,"'checked></td></tr>";
 			}
 		}
 	} else {
@@ -443,9 +437,9 @@ function printTableGas(){
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			if($row["paid"] == 0){
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox'></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='gas' name='", $row["name"] ,"'></td></tr>";
 			}else{
-				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' checked></td></tr>";
+				echo "<tr><td>", $row["name"], "</td><td>", $row["price"], "</td><td><input class='bill_check' type='checkbox' table='gas' name='", $row["name"] ,"'checked></td></tr>";
 			}
 		}
 	} else {
