@@ -33,7 +33,22 @@
 		</div>
 	
 		<div class="bill_div">
-			<h2>House</h2>
+			<div class="bill_buttons_div">
+				<h2>House
+				<input type="image" src="images/plus.png" alt="Submit" width="36" height="36" table="house" class="plus_button">
+				<input type="image" src="images/minus.png" alt="Submit" width="36" height="36" table="house" class="minus_button">
+				<input type="image" src="images/money.png" alt="Submit" width="36" height="36" table="house" class="money_button">
+				</h2>
+			</div>
+			<div class="bill_input_div" id="input_add">
+				<input id="input_add" type="text" table="house" placeholder="Who Do You Want To Add?">
+			</div>
+			<div class="bill_input_div" id="input_remove">
+				<input type="text" table="house" placeholder="Who Do You Want To Remove?">
+			</div>
+			<div class="bill_input_div" id="input_price">
+				<input type="text" table="house" placeholder="Total Price Of House Bill">
+			</div>
 			<table class="bill_table">
 				<tr>
 					<th>Name</th>
@@ -45,7 +60,13 @@
 		</div>
 		
 		<div class="bill_div">
-			<h2>Electric</h2>
+			<div class="bill_buttons_div">
+			<h2>Electric
+				<input type="image" src="images/plus.png" alt="Submit" width="36" height="36" table="house" class="plus_button">
+				<input type="image" src="images/minus.png" alt="Submit" width="36" height="36" table="house" class="minus_button">
+				<input type="image" src="images/money.png" alt="Submit" width="36" height="36" table="house" class="money_button">
+				</h2>
+			</div>
 			<table class="bill_table">
 				<tr>
 					<th>Name</th>
@@ -57,7 +78,13 @@
 		</div>
 		
 		<div class="bill_div">
-			<h2>Internet</h2>
+			<div class="bill_buttons_div">
+			<h2>Internet
+				<input type="image" src="images/plus.png" alt="Submit" width="36" height="36" table="house" class="plus_button">
+				<input type="image" src="images/minus.png" alt="Submit" width="36" height="36" table="house" class="minus_button">
+				<input type="image" src="images/money.png" alt="Submit" width="36" height="36" table="house" class="money_button">
+				</h2>
+			</div>
 			<table class="bill_table">
 				<tr>
 					<th>Name</th>
@@ -69,7 +96,13 @@
 		</div>
 		
 		<div class="bill_div">
-			<h2>Water</h2>
+			<div class="bill_buttons_div">
+			<h2>Water
+				<input type="image" src="images/plus.png" alt="Submit" width="36" height="36" table="house" class="plus_button">
+				<input type="image" src="images/minus.png" alt="Submit" width="36" height="36" table="house" class="minus_button">
+				<input type="image" src="images/money.png" alt="Submit" width="36" height="36" table="house" class="money_button">
+				</h2>
+			</div>
 			<table class="bill_table">
 				<tr>
 					<th>Name</th>
@@ -81,7 +114,13 @@
 		</div>
 		
 		<div class="bill_div">
-			<h2>Garbage</h2>
+			<div class="bill_buttons_div">
+			<h2>Garbage
+				<input type="image" src="images/plus.png" alt="Submit" width="36" height="36" table="house" class="plus_button">
+				<input type="image" src="images/minus.png" alt="Submit" width="36" height="36" table="house" class="minus_button">
+				<input type="image" src="images/money.png" alt="Submit" width="36" height="36" table="house" class="money_button">
+				</h2>
+			</div>
 			<table class="bill_table">
 				<tr>
 					<th>Name</th>
@@ -93,7 +132,13 @@
 		</div>
 		
 		<div class="bill_div">
-			<h2>Gas</h2>
+			<div class="bill_buttons_div">
+			<h2>Gas
+				<input type="image" src="images/plus.png" alt="Submit" width="36" height="36" table="house" class="plus_button">
+				<input type="image" src="images/minus.png" alt="Submit" width="36" height="36" table="house" class="minus_button">
+				<input type="image" src="images/money.png" alt="Submit" width="36" height="36" table="house" class="money_button">
+				</h2>
+			</div>
 			<table class="bill_table">
 				<tr>
 					<th>Name</th>

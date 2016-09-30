@@ -4,7 +4,6 @@
 
 *{
 	font-family: "Open Sans";
-	transition: all 0.5s ease;
 }
 
 html{
@@ -13,7 +12,7 @@ html{
 }
 
 h2{
-	background-color: rgba(255, 161, 0, 0.8);
+	background-color: rgba(28, 180, 195, 0.8);
 	color: black;
 	font-size: 1.6em;
 	padding: 20px;
@@ -82,5 +81,56 @@ td{
 
 .bill_check{
 	transform: scale(1.5);
+	border: none;
+	outline: none;
 }
 
+.bill_buttons_div h2{
+	margin: 0;
+}
+
+.bill_buttons_div input{
+	float: right;
+	margin-left: 10px;
+	border: none;
+	outline: none;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+.bill_buttons_div input:hover{
+	background:rgba(255, 253, 248, 0.8);
+}
+
+.bill_input_div{
+	background-color: rgba(28, 180, 195, 0.8);
+	text-align: center;
+	border: none;
+	outline: none;
+	padding: 10px;
+}
+
+.bill_input_div input{
+	width: 50vh;
+	text-align: center;
+	margin: 0.5vh;
+	border: none;
+	height: 2.5vh;
+	border-radius:5px
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+/**********************************************
+* Buttons
+**********************************************/
+
+#input_price{
+}
+
+#input_remove{
+}
+
+#input_add{
+}
